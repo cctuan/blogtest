@@ -1,0 +1,5 @@
+<form id="post_form_<%=@userid%>" method="post" action="/post/<%=@userid%>">
+<div id="post_btn_<%=@userid%>" class="addPost btn">Save</div>
+<%= text_area_tag :editor, "", :name => "content",:id => "post_"+@userid,:class=> "redactor", :rows => 20, :cols =>120 %>
+
+</form>

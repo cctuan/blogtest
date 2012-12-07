@@ -1,0 +1,18 @@
+<div class="page-header">
+<h4><%=title%></h4>
+</div>
+  <div class="bs-docs-example">
+  <div class="content-post">
+   <%= content.html_safe  %> 
+  </div>
+  <p><%=time%></p>
+
+  </div>
+  <input id="comment_content_<%=id%>" place-holder="Comment">
+  <div id="comment_<%=id%>" class="btn pushcomment">Comment</div>
+  <div class="comments_class_<%=id%>">
+    <% comments.each do |comment| %> 
+      <% comment_block(comment)%>
+    <%end%>
+  </div>
+

@@ -1,0 +1,13 @@
+<div class="hero-unit">
+  <% @mostRecentUsers.each do |user|%>
+  <a href="/blog/<%=user.id%>">
+    <img src="<%=user.images[0].image.url(:thumb)%>">
+  </a>
+  <p></p>
+  <%end%>
+
+</div>
+<% @mostRecentImages.each do |image|%>
+    <img src="<%=image.image.url(:thumb)%>">
+  <p></p>
+  <%end%>

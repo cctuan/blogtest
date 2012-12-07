@@ -1,0 +1,45 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/intro">Intro</a></li>
+        </ul>
+      </div>
+      <div class="nav-collapse collapse rightright">
+        <ul class="nav">
+          <%if user_signed_in?%>
+          <li><a href="/blog/<%=current_user.id%>">My Blog</a></li>
+          <li><a href="/profile/<%=current_user.id%>">Profile</a></li>
+
+          <li><%=link_to('Logout',destroy_user_session_path,:method => :delete)%></li>
+          <%else%>
+           <li><a href="#login" role="button" data-toggle="modal">Log In</a></li>
+           <%end%>
+
+
+        </ul>  
+      </div>
+    </div>
+  </div>
+</div>
+<div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 id="myModalLabel">Login</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for("user", :url => user_session_path) do |f|%>
+      <%= f.text_field :email%><br>
+      <%= f.password_field :password%><br>
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+      <%= f.submit 'Sign In'%><br>
+      <%= link_to "Forget your password?" ,new_password_path('user') %>
+    <%end%>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>

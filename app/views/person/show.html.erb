@@ -1,0 +1,47 @@
+<div class="row">
+  
+
+  <h2><%= @user.name %></h3>
+    <%if not_friend_yet%>
+      <div class="btn addFriends" id="add_<%=current_user.id%>_<%=@user.id%>" >Add Friend</div>
+    <%elsif friend_already%>
+      <div class="btn deleteFriends" id="delete_<%=current_user.id%>_<%=@user.id%>" >Delete Friend</div>
+    <%end%>
+    <%if current_user_sign_in %>
+      <div class="btn"><a href="/blog/<%=@user.id%>/addpost">Post New Article</a></div>
+    <%else%>
+      
+    <%end%>
+  
+  <div class="span9">
+  <div class="pagination">
+    <ul>
+    <%=will_paginate @posts,:container => false%>
+    </ul>
+  </div>
+    <% leng = @posts.length 
+     until leng==0
+       leng -= 1
+       post_main_page(@posts[leng])
+     end
+     %> 
+  </div>
+ 
+  <div class="span3">
+    <%imageAll%>
+    <img src="<%=@allimages[0].image.url(:medium)%>" class="img-rounded">
+    <div>
+      <% friends_thumbs.each do |friend|%>
+        <div class="row">
+          <a href="/blog/<%=friend.id%>">
+            <div class="span2">
+              <img class="img-rounded" src="<%=friend.images[0].image.url(:thumb)%>">
+            </div>
+            <div class="span1"><%=friend.name%></div>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

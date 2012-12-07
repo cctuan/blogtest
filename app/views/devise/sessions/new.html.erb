@@ -1,0 +1,10 @@
+<h2>Sign in</h2>
+
+<form class="form-vertical" method="post" action="<%=session_path(resource_name)%>"> 
+  <input name="email" autofocus=true>
+  <input name="password">
+  <input name="remember_me" value=<%=devise_mapping.rememberable? %>>
+  <button type="submit" class="btn-primary">Sign in</button>
+</form>
+
+<%= render "devise/shared/links" %>

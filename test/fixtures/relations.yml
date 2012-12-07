@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  relatied_id: 1
+  relating_id: 1
+  type: 
+
+two:
+  relatied_id: 1
+  relating_id: 1
+  type: 
